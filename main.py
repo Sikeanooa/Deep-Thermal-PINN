@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# 1. 检查是否有GPU (对于这个小项目，CPU也足够快)
+# 1. 检查是否有GPU 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # 2. 定义神经网络 (PINN)
@@ -57,7 +57,7 @@ def train():
     model = ThermalPINN().to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
     
-    print("开始训练 '安全无害' 的热力学PINN模型...")
+    print("开始训练热力学PINN模型...")
     
     for epoch in range(2000): # 训练2000次
         optimizer.zero_grad()
@@ -86,7 +86,7 @@ def train():
 
     return model
 
-# 5. 运行并画图 (证明你做出来了)
+# 5. 运行并画图 
 if __name__ == "__main__":
     trained_model = train()
     
@@ -110,4 +110,5 @@ if __name__ == "__main__":
     sns.heatmap(U, cmap='coolwarm')
     plt.title("Predicted Thermal Distribution at t=0.5")
     plt.show()
+
     print("项目完成！这就是一张完美的热力分布图。")
